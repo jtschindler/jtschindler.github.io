@@ -2183,6 +2183,39 @@ input, select, textarea {
       height: 120px;
     }
 
+/* Tumbnail */
+
+ .thumbnail {
+	display: inline-block;
+ }
+
+ 	.thumbnail img {
+		float: left;
+		margin: 0px 0px 0px 0px;
+		border-radius: 0%;
+		object-fit: cover;
+		height: 120px;
+	}
+		@media screen and (max-width: 1400px) {
+			.thumbnail img {
+				height: 80px;
+			}
+
+		}
+
+		@media screen and (max-width: 1024px) {
+			.thumbnail img {
+				height: 50px;
+			}
+
+		}
+
+		@media screen and (max-width: 760px) {
+			.thumbnail img {
+				height: 30px;
+			}
+	 }
+
 
 /* List */
 
