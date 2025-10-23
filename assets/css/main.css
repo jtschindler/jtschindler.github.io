@@ -7,6 +7,16 @@
 	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
 */
 
+@font-face {
+    font-family: "Minerva Modern";
+    src: url("../webfonts/MinervaModern Bold.ttf") format("opentype");
+}
+
+@font-face {
+  font-family: minerva-modern;
+  src: url(https://use.typekit.net/af/2d15e1/00000000000000003b9afd25/27/l?subset_id=2&fvd=n4&v=3);
+}
+
 html, body, div, span, applet, object,
 iframe, h1, h2, h3, h4, h5, h6, p, blockquote,
 pre, a, abbr, acronym, address, big, cite,
@@ -133,11 +143,11 @@ input, select, textarea {
 	body, input, select, textarea {
 		color: #fff;
 		/*font-family: "Open Sans", Helvetica, sans-serif;*/
-        font-family: "Minerva Modern", "Open Sans", Helvetica, sans-serif;
-		font-size: 15pt;
-		font-weight: 400;
-		letter-spacing: 0.075em;
-		line-height: 1.65em;
+        font-family: "minerva-modern", "Open Sans", Helvetica, sans-serif;
+		font-size: 16pt;
+		font-weight: 500;
+		letter-spacing: 0.065em;
+		line-height: 1.35em;
 	}
 
 		@media screen and (max-width: 1680px) {
@@ -4054,7 +4064,8 @@ input, select, textarea {
 						border: 0;
 						color: #fff;
 						display: block;
-						font-size: 0.8em;
+						font-size: 0.9em;
+                        font-weight: 700;
 						letter-spacing: 0.225em;
 						padding: 0 1.5em;
 						text-transform: uppercase;
