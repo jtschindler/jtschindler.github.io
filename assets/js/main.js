@@ -80,4 +80,91 @@
 
 		}
 
+	// Spotlight rotated-contain correction.
+		var updateSpotlightRotateContainScale = function() {
+
+			var parseAngleToRadians = function(angleValue) {
+				if (!angleValue)
+					return 0;
+
+				var value = angleValue.trim().toLowerCase();
+				var number = parseFloat(value);
+
+				if (!isFinite(number))
+					return 0;
+
+				if (value.indexOf('turn') !== -1)
+					return number * Math.PI * 2;
+
+				if (value.indexOf('rad') !== -1)
+					return number;
+
+				if (value.indexOf('deg') !== -1)
+					return number * Math.PI / 180;
+
+				return number * Math.PI / 180;
+			};
+
+			var applyScale = function($imageWrap) {
+				var imageWrap = $imageWrap[0];
+				var section = $imageWrap.closest('.spotlight.style1')[0];
+				var img = $imageWrap.find('img')[0];
+
+				if (!imageWrap || !section || !img)
+					return;
+
+				var ww = imageWrap.clientWidth;
+				var wh = imageWrap.clientHeight;
+				var nw = img.naturalWidth;
+				var nh = img.naturalHeight;
+
+				if (!(ww > 0 && wh > 0 && nw > 0 && nh > 0)) {
+					imageWrap.style.setProperty('--spotlight-image-rotate-scale', '1');
+					return;
+				}
+
+				var angleValue = getComputedStyle(section).getPropertyValue('--spotlight-image-rotate');
+				var theta = parseAngleToRadians(angleValue);
+				var absCos = Math.abs(Math.cos(theta));
+				var absSin = Math.abs(Math.sin(theta));
+
+				var containScale = Math.min(ww / nw, wh / nh);
+				var fittedW = nw * containScale;
+				var fittedH = nh * containScale;
+
+				var rotatedW = fittedW * absCos + fittedH * absSin;
+				var rotatedH = fittedW * absSin + fittedH * absCos;
+
+				if (!(rotatedW > 0 && rotatedH > 0)) {
+					imageWrap.style.setProperty('--spotlight-image-rotate-scale', '1');
+					return;
+				}
+
+				var rotateContainScale = Math.min(ww / rotatedW, wh / rotatedH);
+				imageWrap.style.setProperty('--spotlight-image-rotate-scale', rotateContainScale.toFixed(5));
+			};
+
+			$('.spotlight.style1 > .image.img-scale-contain.img-rotate-angle').each(function() {
+				var $imageWrap = $(this);
+				var img = $imageWrap.find('img')[0];
+
+				if (!img)
+					return;
+
+				if (img.complete && img.naturalWidth > 0)
+					applyScale($imageWrap);
+				else
+					img.addEventListener('load', function() { applyScale($imageWrap); }, { once: true });
+			});
+
+		};
+
+		$window.on('load', function() {
+			updateSpotlightRotateContainScale();
+		});
+
+		$window.on('resize', function() {
+			updateSpotlightRotateContainScale();
+		});
+
 })(jQuery);

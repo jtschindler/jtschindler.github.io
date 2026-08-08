@@ -2140,12 +2140,39 @@ input, select, textarea {
 		border-radius: 4px;
 		border: 0;
 		display: inline-block;
+		max-width: 100%;
 		position: relative;
 	}
 
 		.image img {
-			border-radius: 60%;
+			border-radius: 4px;
 			display: block;
+			height: auto;
+			max-width: 100%;
+		}
+
+		.image.size-xs {
+			width: 8em;
+		}
+
+		.image.size-sm {
+			width: 14em;
+		}
+
+		.image.size-md {
+			width: 22em;
+		}
+
+		.image.size-lg {
+			width: 32em;
+		}
+
+		.image.size-xl {
+			width: 42em;
+		}
+
+		.image.size-full {
+			width: 100%;
 		}
 
 		.image.left {
@@ -3185,6 +3212,8 @@ input, select, textarea {
 		position: relative;
 		overflow-x: hidden;
 		text-align: left;
+		--spotlight-content-width: 65%;
+		--spotlight-image-width: 35%;
 	}
 
 		.spotlight.style1 .content {
@@ -3201,12 +3230,12 @@ input, select, textarea {
 			-webkit-flex-shrink: 1;
 			-ms-flex-shrink: 1;
 			flex-shrink: 1;
-			width: 65%;
+			width: var(--spotlight-content-width);
 			max-width: 64rem;
 			margin: 0 auto;
 		}
 
-		.spotlight.style1 .image {
+		.spotlight.style1 > .image {
 			-moz-flex-grow: 0;
 			-webkit-flex-grow: 0;
 			-ms-flex-grow: 0;
@@ -3215,12 +3244,12 @@ input, select, textarea {
 			-webkit-flex-shrink: 0;
 			-ms-flex-shrink: 0;
 			flex-shrink: 0;
-			width: 35%;
+			width: var(--spotlight-image-width);
 			min-width: 25rem;
 			border-radius: 0;
 		}
 
-			.spotlight.style1 .image img {
+			.spotlight.style1 > .image img {
 				-moz-object-fit: cover;
 				-webkit-object-fit: cover;
 				-ms-object-fit: cover;
@@ -3237,6 +3266,36 @@ input, select, textarea {
 				height: 100%;
 				border-radius: 0;
 			}
+
+		/* Optional: show the full image without cropping and color-fill remaining space */
+		.spotlight.style1 > .image.img-scale-contain {
+			background-color: var(--spotlight-image-fill, #001b2e);
+		}
+
+		.spotlight.style1 > .image.img-scale-contain img {
+			-moz-object-fit: contain;
+			-webkit-object-fit: contain;
+			-ms-object-fit: contain;
+			object-fit: contain;
+			-moz-object-position: center;
+			-webkit-object-position: center;
+			-ms-object-position: center;
+			object-position: center;
+		}
+
+		/* Optional: rotate by any specified angle, e.g. --spotlight-image-rotate: 18deg */
+		.spotlight.style1 > .image.img-rotate-angle img {
+			top: 50%;
+			left: 50%;
+			-moz-transform: translate(-50%, -50%) rotate(var(--spotlight-image-rotate, 0deg)) scale(var(--spotlight-image-rotate-scale, 1));
+			-webkit-transform: translate(-50%, -50%) rotate(var(--spotlight-image-rotate, 0deg)) scale(var(--spotlight-image-rotate-scale, 1));
+			-ms-transform: translate(-50%, -50%) rotate(var(--spotlight-image-rotate, 0deg)) scale(var(--spotlight-image-rotate-scale, 1));
+			transform: translate(-50%, -50%) rotate(var(--spotlight-image-rotate, 0deg)) scale(var(--spotlight-image-rotate-scale, 1));
+			-moz-transform-origin: center;
+			-webkit-transform-origin: center;
+			-ms-transform-origin: center;
+			transform-origin: center;
+		}
 
 		@media screen and (max-width: 1680px) {
 
@@ -3258,12 +3317,13 @@ input, select, textarea {
 
 			.spotlight.style1 .content {
 				padding: 3.75rem 3rem 1.75rem 3rem ;
-				width: 50%;
+				width: var(--spotlight-content-width);
 				min-width: 0;
+				max-width: none;
 			}
 
-			.spotlight.style1 .image {
-				width: 50%;
+			.spotlight.style1 > .image {
+				width: var(--spotlight-image-width);
 				min-width: 0;
 			}
 
@@ -3291,11 +3351,11 @@ input, select, textarea {
 				width: 100%;
 			}
 
-			.spotlight.style1 .image {
+			.spotlight.style1 > .image {
 				width: 100%;
 			}
 
-				.spotlight.style1 .image img {
+				.spotlight.style1 > .image img {
 					position: relative;
 				}
 
@@ -3327,14 +3387,14 @@ input, select, textarea {
 			text-align: right;
 		}
 
-		.spotlight.style1.image-position-left .image img {
+		.spotlight.style1.image-position-left > .image img {
 			-moz-object-position: left;
 			-webkit-object-position: left;
 			-ms-object-position: left;
 			object-position: left;
 		}
 
-		.spotlight.style1.image-position-right .image img {
+		.spotlight.style1.image-position-right > .image img {
 			-moz-object-position: right;
 			-webkit-object-position: right;
 			-ms-object-position: right;
@@ -4057,6 +4117,7 @@ input, select, textarea {
 
 				#header nav > ul > li {
 					display: inline-block;
+					position: relative;
 					padding: 0;
 				}
 
@@ -4111,8 +4172,142 @@ input, select, textarea {
 						margin-left: 0;
 					}
 
+					#header nav > ul > li > a.active,
+					#header nav > ul > li.active-parent > a {
+						color: #f5c542;
+					}
+
+					#header nav > ul > li.has-submenu > a:after {
+						content: '\25BE';
+						font-size: 0.75em;
+						margin-left: 0.5em;
+					}
+
+					#header nav > ul > li .submenu {
+						background: #000a14;
+						border: solid 1px rgba(255, 255, 255, 0.2);
+						line-height: 1.2;
+						list-style: none;
+						margin: 0;
+						opacity: 0;
+						padding: 0.35em 0;
+						pointer-events: none;
+						position: absolute;
+						right: 0;
+						top: 100%;
+						transform: translateY(0.3em);
+						transition: opacity 0.2s ease, transform 0.2s ease;
+						visibility: hidden;
+						white-space: nowrap;
+						z-index: 10001;
+					}
+
+					#header nav > ul > li .submenu li {
+						display: block;
+					}
+
+					#header nav > ul > li .submenu a {
+						border: 0;
+						display: block;
+						font-size: 0.72em;
+						font-weight: 700;
+						letter-spacing: 0.16em;
+						padding: 0.8em 1.4em;
+						text-transform: uppercase;
+					}
+
+					#header nav > ul > li .submenu a.active {
+						background: rgba(255, 255, 255, 0.1);
+						color: #f5c542;
+					}
+
+					#header nav > ul > li.has-submenu:hover .submenu,
+					#header nav > ul > li.has-submenu:focus-within .submenu,
+					#header nav > ul > li.has-submenu.open .submenu {
+						opacity: 1;
+						pointer-events: auto;
+						transform: translateY(0);
+						visibility: visible;
+					}
+
+					@media screen and (max-width: 736px) {
+
+						#header nav > ul > li .submenu {
+							left: 0;
+							right: auto;
+							min-width: 14em;
+							max-width: 90vw;
+						}
+
+					}
+
+					@media screen and (max-width: 980px) {
+
+						#header {
+							height: auto;
+							line-height: normal;
+							padding: 0.25em 0;
+						}
+
+						#page-wrapper {
+							padding-top: 4.5em;
+						}
+
+						#header nav {
+							height: auto;
+							line-height: normal;
+							position: static;
+							width: 100%;
+						}
+
+						#header nav > ul {
+							display: flex;
+							flex-wrap: wrap;
+							justify-content: center;
+							white-space: normal;
+						}
+
+						#header nav > ul > li {
+							display: block;
+						}
+
+						#header nav > ul > li > a {
+							font-size: 0.72em;
+							letter-spacing: 0.16em;
+							padding: 0.45em 0.8em;
+						}
+
+						#header nav > ul > li .submenu {
+							left: 50%;
+							right: auto;
+							transform: translate(-50%, 0.3em);
+							max-width: calc(100vw - 2em);
+						}
+
+						#header nav > ul > li.has-submenu:hover .submenu,
+						#header nav > ul > li.has-submenu:focus-within .submenu,
+						#header nav > ul > li.has-submenu.open .submenu {
+							transform: translate(-50%, 0);
+						}
+
+					}
+
+					@media screen and (max-width: 480px) {
+
+						#page-wrapper {
+							padding-top: 5.5em;
+						}
+
+						#header nav > ul > li > a {
+							font-size: 0.65em;
+							letter-spacing: 0.12em;
+							padding: 0.4em 0.6em;
+						}
+
+					}
+
 		#header.alt {
-			background: transparent;
+			background: #000a14;
 		}
 
 			#header.alt h1 {
@@ -4136,7 +4331,7 @@ input, select, textarea {
 		-ms-justify-content: center;
 		justify-content: center;
 		cursor: default;
-		height: 100vh;
+		height: 80vh;
 		min-height: 35em;
 		overflow: hidden;
 		position: relative;
@@ -4374,10 +4569,10 @@ input, select, textarea {
 
 	#main > header {
 		padding: 12em 0 12em 0 ;
-		background-image: -moz-linear-gradient(top, rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url("../../images/banner.jpg");
-		background-image: -webkit-linear-gradient(top, rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url("../../images/banner.jpg");
-		background-image: -ms-linear-gradient(top, rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url("../../images/banner.jpg");
-		background-image: linear-gradient(top, rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url("../../images/banner.jpg");
+		background-image: -moz-linear-gradient(top, rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url("../../images/banner_esa_quasar.jpg");
+		background-image: -webkit-linear-gradient(top, rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url("../../images/banner_esa_quasar.jpg");
+		background-image: -ms-linear-gradient(top, rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url("../../images/banner_esa_quasar.jpg");
+		background-image: linear-gradient(top, rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url("../../images/banner_esa_quasar.jpg");
 		background-attachment: fixed;
 		background-position: center center;
 		background-repeat: no-repeat;
@@ -4440,6 +4635,13 @@ input, select, textarea {
 
 	body.is-mobile #main > header {
 		background-attachment: scroll;
+	}
+
+	#main.research-quasar-discovery > header {
+		background-image: -moz-linear-gradient(top, rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url("../../images/banner_esa_quasar.jpg");
+		background-image: -webkit-linear-gradient(top, rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url("../../images/banner_esa_quasar.jpg");
+		background-image: -ms-linear-gradient(top, rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url("../../images/banner_esa_quasar.jpg");
+		background-image: linear-gradient(top, rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url("../../images/banner_esa_quasar.jpg");
 	}
 
 /* Software */
@@ -4670,10 +4872,10 @@ input, select, textarea {
 /* Landing */
 
 	body.landing #page-wrapper {
-		background-image: -moz-linear-gradient(top, rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url("../../images/banner.jpg");
-		background-image: -webkit-linear-gradient(top, rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url("../../images/banner.jpg");
-		background-image: -ms-linear-gradient(top, rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url("../../images/banner.jpg");
-		background-image: linear-gradient(top, rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url("../../images/banner.jpg");
+		background-image: -moz-linear-gradient(top, rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url("../../images/banner_esa_quasar.jpg");
+		background-image: -webkit-linear-gradient(top, rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url("../../images/banner_esa_quasar.jpg");
+		background-image: -ms-linear-gradient(top, rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url("../../images/banner_esa_quasar.jpg");
+		background-image: linear-gradient(top, rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url("../../images/banner_esa_quasar.jpg");
 		background-attachment: fixed;
 		background-position: center center;
 		background-repeat: no-repeat;
@@ -4691,10 +4893,10 @@ input, select, textarea {
 
 	body.is-mobile.landing #banner,
 	body.is-mobile.landing .wrapper.style4 {
-		background-image: -moz-linear-gradient(top, rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url("../../images/banner.jpg");
-		background-image: -webkit-linear-gradient(top, rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url("../../images/banner.jpg");
-		background-image: -ms-linear-gradient(top, rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url("../../images/banner.jpg");
-		background-image: linear-gradient(top, rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url("../../images/banner.jpg");
+		background-image: -moz-linear-gradient(top, rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url("../../images/banner_esa_quasar.jpg");
+		background-image: -webkit-linear-gradient(top, rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url("../../images/banner_esa_quasar.jpg");
+		background-image: -ms-linear-gradient(top, rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url("../../images/banner_esa_quasar.jpg");
+		background-image: linear-gradient(top, rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url("../../images/banner_esa_quasar.jpg");
 		background-position: center center;
 		background-repeat: no-repeat;
 		background-size: cover;

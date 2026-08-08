@@ -1,0 +1,148 @@
+<!DOCTYPE HTML>
+<!--
+	Spectral by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Quasar Discovery - Jan-Torge Schindler, PhD</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+
+		<!-- Page Wrapper -->
+			<div id="page-wrapper">
+
+			<!-- Header -->
+			<div id="site-header"></div>
+
+			<!-- Main -->
+			<article id="main" class="research-quasar-discovery">
+				<header>
+					<h1 style="margin: 0 0 0 0;">Research Highlight</h1>
+					<h2>Quasar discovery at the redshift frontier</h2>
+					<!-- <p>Research subpage</p> -->
+				</header>
+
+				<section class="wrapper style1 special">
+					<div class="inner align-left" style="width: 80%;">
+						<header class="align-left">
+							<h2>The search for the most distant quasars</h2>
+						</header>
+						<p>
+						In the coming years, the Euclid space mission, launched in 2023, the Vera Rubin Observatory and its Legacy Survey 
+						of Space and Time, and the Nancy Grace Roman Space Telescope will build the deepest optical and 
+						near-infrared maps of the extragalactic sky.
+						These unprecedented data sets lay the foundation for the discovery of quasars up to redshifts 
+						of ~10, allowing us to truly understand their formation processes and early growth. 
+						
+						My group works on developing new machine-learning driven quasar selection strategies tailored 
+						to these surveys to conduct a census of the most distant quasars.
+                        </p>
+						
+					</div>
+				</section>
+
+
+				<section id="two" class="wrapper alt style2">
+					<section class="spotlight style1 orient-right" style="--spotlight-content-width: 50%; --spotlight-image-width: 50%; --spotlight-image-fill: #fefefe;">
+						<div class="image img-scale-contain"><img src="images/quest_figure.png" alt="" /></div>
+                        <div class="content">
+                            <h2>Quasar Selection with machine learning classification</h2>
+                            <p>
+							For the design of the Extremely Luminous Quasar Survey (ELQS) I developed a machine learning
+							classification algorithm based on random forests to identify the most luminous quasars at z=3-5.
+							The algorithm was trained on a large sample of known quasars and stars, and applied to panchromati
+							photometric data from the Sloan Digital Sky Survey (SDSS), the Two Micron All Sky Survey (2MASS), and the Wide-field Infrared Survey 
+							Explorer (WISE). 
+							We demonstrated that random forests remains a highly viable method even at higher redhifts, z≈4.8-6.3, where
+							it outperforms traditional color selection methods.
+							<br>
+							<br>
+							For our Euclid quasar selection strategy we continue to use tree-based methods, in particular 
+							Extreme Gradient Boosting (XGBoost).
+							As there is not sufficient empirical training data for z>6.5 quasars, we have developed a 
+							generative model based on a Variational Autoencoder (VAE), Quasar unsupervised encoder and synthesis tool (QUEST), 
+							that can produce synthetic quasar spectra.
+							The image on the right shows spectral variations in 5 of the 12 latent dimensions of the VAE model.
+							The spectra are modified to account for the intergalactic medium absorption and used to calculate 
+							synthetic photometry for the classification task. At present our strategy is best described in 
+							Section 3.2 of <a href="https://ui.adsabs.harvard.edu/abs/2026A%26A...711A.104Y/abstract" target="_blank" rel="noopener noreferrer">Yang, D. et al. 2026</a>.
+						</p>
+
+						<p style="margin: 0 0 0.75em 0;"><b>Relevant publications</b></p>
+						<ul style="font-size:0.8em; margin: 0 0 2em 1.25em;">
+							<li><a href="https://ui.adsabs.harvard.edu/abs/2017ApJ...851...13S/abstract" target="_blank" rel="noopener noreferrer">The Extremely Luminous Quasar Survey in the SDSS Footprint. I. Infrared-based Candidate Selection (Schindler et al. 2017)</a></li>
+							<li><a href="https://ui.adsabs.harvard.edu/abs/2019ApJS..243....5S/abstract" target="_blank" rel="noopener noreferrer">The Extremely Luminous Quasar Survey in the Pan-STARRS 1 Footprint (Schindler et al. 2019b)</a></li>
+							<li><a href="https://ui.adsabs.harvard.edu/abs/2021AJ....162...72W/abstract" target="_blank" rel="noopener noreferrer">Random Forests as a Viable Method to Select and Discover High-redshift Quasars  (Wenzl, Schindler et al. 2021)</a></li>
+							<li><a href="https://ui.adsabs.harvard.edu/abs/2026A%26A...709A.241G/abstract" target="_blank" rel="noopener noreferrer">QUEST: Quasar unsupervised encoder and synthesis tool: A machine-learning framework for generating quasar spectra (Guarneri et al. 2026)</a></li>
+						</ul>
+
+                        </div>
+                    </section>
+                </section>
+
+
+				<section id="two" class="wrapper alt style2">
+					<section class="spotlight style1 orient-left" style="--spotlight-image-fill: #000000; --spotlight-image-rotate: 90deg;">
+						<div class="image img-scale-contain img-rotate-angle"><img src="images/Quasars_discovered_by_Euclid.png" alt="" /></div>
+                        <div class="content">
+                            <h2>Quasar Discoveries with Euclid</h2>
+                            <p>
+                            Since 2024 we have been exploiting the Euclid Wide Survey on-the-fly data in collaboration with the Euclid Consortium's 
+							QSO work package. Our first discovery publication, showcases 31 new z>6.5 quasars, including the two most 
+							distant quasars known to date at z=7.69 and z=7.77. 
+							The collage on the left shows 15 false-color cutout images of the 31 newly discovered quasars.
+							<br>
+							<br>
+							The QSO work package pools together observational resources for ground-based follow-up observations. 
+							My group is leading efforts with ESO's VLT and has been instrumental in winning a Gemini Large and Long Program.
+							In addition, the QSO work package has secured time on the Hubble Space Telescope (HST) and 
+							the James Webb Space Telescope (JWST) for spectroscopic confirmation. My group is leading the JWST survey program 
+							GO 11173 (PI: J. Schindler) to obtain NIRSpec PRISM spectra of the faintest Euclid candidates.
+							</p>
+						
+						<p style="margin: 0 0 0.75em 0;"><b>Relevant publications</b></p>
+						<ul style="font-size:0.8em; margin: 0 0 2em 1.25em;">
+							<li><a href="https://ui.adsabs.harvard.edu/abs/2026A%26A...711A.104Y/abstract" target="_blank" rel="noopener noreferrer">Euclid: Discovery of 31 new quasars at 6.6 < z < 7.8 (Yang, D. et al. 2026)</a></li>
+						</ul>
+
+						<p style="margin: 0 0 0.75em 0;"><b>Associated press releases:</b></p>
+						<ul style="font-size:0.8em; margin: 0 0 2em 1.25em;">
+							<li><a href="https://www.min.uni-hamburg.de/en/ueber-die-fakultaet/aktuelles/2026/0706-euclid-entdeckt-aelteste-quasare-im-universum.html"  target="_blank" rel="noopener noreferrer">Euclid discovers the oldest quasars in the universe</a> (<a href="https://www.esa.int/Science_Exploration/Space_Science/Euclid/Euclid_discovers_the_most_ancient_quasar_in_the_Universe" target="_blank" rel="noopener noreferrer">ESA press release</a>)</li>
+						</ul>
+
+                        </div>
+                    </section>
+                </section>
+
+			</article>
+
+			<!-- Footer -->
+				<footer id="footer">
+					<ul class="copyright">
+						<li>&copy; Jan-Torge Schindler</li>
+						<li><a href="impressum.html">Imprint</a></li>
+						<li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+						<li>Redesign: Jan-Torge Schindler</li>
+					</ul>
+				</footer>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/shared-nav.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>
