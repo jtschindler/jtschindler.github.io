@@ -4567,6 +4567,19 @@ input, select, textarea {
 
 /* Main */
 
+	/* Optional banner crop anchoring (set on article/container) */
+	.banner-from-bottom {
+		--banner-focus-y: bottom;
+	}
+
+	.banner-from-center {
+		--banner-focus-y: center;
+	}
+
+	.banner-from-top {
+		--banner-focus-y: top;
+	}
+
 	#main > header {
 		padding: 12em 0 12em 0 ;
 		background-image: -moz-linear-gradient(top, rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url("../../images/banner_esa_quasar.jpg");
@@ -4574,7 +4587,7 @@ input, select, textarea {
 		background-image: -ms-linear-gradient(top, rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url("../../images/banner_esa_quasar.jpg");
 		background-image: linear-gradient(top, rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url("../../images/banner_esa_quasar.jpg");
 		background-attachment: fixed;
-		background-position: center center;
+		background-position: var(--banner-focus-x, center) var(--banner-focus-y, center);
 		background-repeat: no-repeat;
 		background-size: cover;
 		text-align: center;
@@ -4653,7 +4666,7 @@ input, select, textarea {
 		background-image: -ms-linear-gradient(top, rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url("../../images/code.jpg");
 		background-image: linear-gradient(top, rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url("../../images/code.jpg");
 		background-attachment: fixed;
-		background-position: center center;
+		background-position: var(--banner-focus-x, center) var(--banner-focus-y, center);
 		background-repeat: no-repeat;
 		background-size: cover;
 		text-align: center;
@@ -4726,7 +4739,7 @@ input, select, textarea {
 		background-image: -ms-linear-gradient(top, rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url("../../images/group_2026_banner2.jpg");
 		background-image: linear-gradient(top, rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url("../../images/group_2026_banner2.jpg");
 		background-attachment: fixed;
-		background-position: bottom center;
+		background-position: var(--banner-focus-x, center) var(--banner-focus-y, bottom);
 		background-repeat: no-repeat;
 		background-size: cover;
 		text-align: center;
