@@ -23,35 +23,75 @@
 			<!-- Main -->
 			<article id="main">
 				<header>
-                    <h1 style="margin: 0 0 0 0;">Research Highlight</h1>
+                    <!-- <h1 style="margin: 0 0 0 0;">Research Highlight</h1> -->
 					<h2>Machine Learning in Astrophysics</h2>
 					<!-- <p>Research subpage</p> -->
 				</header>
 
 				<section class="wrapper style1 special">
 					<div class="inner align-left" style="width: 80%;">
-						<header class="align-left">
-							<h2>Under construction</h2>
-						</header>
-						<!-- <p>
-						My group applies machine learning techniques to search for rare high-redshift quasar candidates
-                            in large astronomical datasets. For source classification and photometric redshift
-                            estimation (regression problem), we currently employ random forests, eXtreme Gradient Boosting, and Bayesian
-                            neural networks.
+						<!-- <header class="align-left">
+							<h2>Supervised classification</h2>
+						</header> -->
+                        <h2>Supervised classification</h2>
+                        <p>Machine learning classification has been shown to be a powerful tool for the selection of rare 
+                        astrophysical sources. I have developed a machine learning classification algorithm based on 
+                        <i>random forests</i> to identify the most luminous quasars at z=3-5.
+                        Random forests is a state-of-the-art ensemble learning method that combines multiple decision 
+                        trees to improve classification accuracy and reduce overfitting. 
+                        The algorithm was trained on a large sample of known quasars and stars, and applied to panchromatic
+                        photometric data. Lukas Wenzl, a Bachelor student under my supervision,
+                        extended this work towards higher redshifts. 
+                        <br>
+                        <br>
+                        For our Euclid z>6.5 quasar selection, my postdoc Francesco Guarneri is 
+                        using optimized gradient-boosted decision trees implemented in <i>eXtreme Gradient Boosting (XGBoost)</i>.
+                        The algorithm is trained on synthetic quasar photometry (see QUEST below) and empirical contaminant photometry.
+                        Our current discoveries shows that this selection strategy is highly effective. 
                         </p>
+                        <p style="margin: 0 0 0.75em 0;"><i>Relevant publications</i></p>
+						<ul style="font-size:0.8em; margin: 0 0 2em 1.25em;">
+							<li><a href="https://ui.adsabs.harvard.edu/abs/2017ApJ...851...13S/abstract" target="_blank" rel="noopener noreferrer">The Extremely Luminous Quasar Survey in the SDSS Footprint. I. Infrared-based Candidate Selection (Schindler et al. 2017)</a></li>
+							<li><a href="https://ui.adsabs.harvard.edu/abs/2021AJ....162...72W/abstract" target="_blank" rel="noopener noreferrer">Random Forests as a Viable Method to Select and Discover High-redshift Quasars  (Wenzl, Schindler et al. 2021)</a></li>
+							<!-- <li><a href="https://ui.adsabs.harvard.edu/abs/2026A%26A...709A.241G/abstract" target="_blank" rel="noopener noreferrer">QUEST: Quasar unsupervised encoder and synthesis tool: A machine-learning framework for generating quasar spectra (Guarneri et al. 2026)</a></li> -->
+						</ul>
+
+
+                        <h2>Generative models</h2>
                         <p>
-                        However, at high redshift, z>6, we run into the problem that there is not sufficient empirical
-                            training data available for the rare luminous quasars we are interested in. Therefore, we are currently developing
-                            a generative model based on a Variational Autoencoder that can produce synthetic quasar
-                            spectra. Trained on a large sample of lower-redshift quasars, this model will allow us
-                            to calculate synthetic photometry based on the spectra and reconstruct quasar spectra with
-                            missing spectral coverage.
+                        At high redshift, z>6, there are not sufficient quasars known to train a supervised machine learning 
+                        classifier. As quasar spectra do not seem to evolve with redshifts, with the exception of the absorption
+                        due to the intergalactic medium (IGM), we can train a generative model on lower redshift quasars 
+                        and use it to generate synthetic quasar spectra.
+                        <br>
+                        <br>
+                        We have trained an information maximizing <i>Variational Autoencoder (VAE)</i> on a large sample of 
+                        SDSS quasars and use is to generate synthetic quasar spectra. 
+                        This generative model, Quasar unsupervised encoder and synthesis tool (QUEST), has been 
+                        published and the architecture and the trained models are 
+                        <a href="https://github.com/cosmic-dawn-group/QUEST" target="_blank" rel="noopener noreferrer">publicly available</a>.
+                        We calculate synthethic photometry from the generated spectra, which have been  redshifted and modified 
+                        to account for IGM absorption.
                         </p>
+                        <p style="margin: 0 0 0.75em 0;"><i>Relevant publications</i></p>
+						<ul style="font-size:0.8em; margin: 0 0 2em 1.25em;">
+							<!-- <li><a href="https://ui.adsabs.harvard.edu/abs/2017ApJ...851...13S/abstract" target="_blank" rel="noopener noreferrer">The Extremely Luminous Quasar Survey in the SDSS Footprint. I. Infrared-based Candidate Selection (Schindler et al. 2017)</a></li> -->
+							<!-- <li><a href="https://ui.adsabs.harvard.edu/abs/2021AJ....162...72W/abstract" target="_blank" rel="noopener noreferrer">Random Forests as a Viable Method to Select and Discover High-redshift Quasars  (Wenzl, Schindler et al. 2021)</a></li> -->
+							<li><a href="https://ui.adsabs.harvard.edu/abs/2026A%26A...709A.241G/abstract" target="_blank" rel="noopener noreferrer">QUEST: Quasar unsupervised encoder and synthesis tool: A machine-learning framework for generating quasar spectra (Guarneri et al. 2026)</a></li>
+						</ul>
+
+                        <h2>Un-/Self-supervised classfication, representation learning, and anomaly detection</h2>
                         <p>
-                        I am further interested to explore the vast data sets of the Euclid mission and the Vera C. Rubin
-                        Observatory's Legacy Survey of Space and Time (LSST) to search for rare and exotic objects with
-                        unsupervised machine learning methods.
-                        </p> -->
+                        My new PhD student Tatsuyuki Sekine and my postdoc Laura Martínez are now exploring un-/self-supervised
+                        discovery strategies for rare sources in the Euclid Wide Survey. We are interested in sources that 
+                        would be rejected by supervised classification, but are still astrophysically interesting.
+                        These include lensed quasars, quasars with unusual spectral energy distributions, and other exotic sources.
+                        <br>
+                        <br>
+                        In particular, we are developing strategies based on <i>probabilistic auto-encoders</i> and
+                        <i>contrastive learning (simCLR, MoCo)</i>.   
+                        </p>
+						
 					</div>
 				</section>
 
